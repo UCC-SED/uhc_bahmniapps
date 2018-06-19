@@ -1,0 +1,16 @@
+<div class="revise-refill-modal-wrapper" aria-labelledby="dialog-label">
+    <span class="ngdialog-start"></span>
+
+    <span class="ngdialog-close"></span>
+    <div class="drug-details" ng-if="stockAvaibilityStatus">
+        <p><strong class="drug-name">{{stockAvaibilityDrugOrder.drug.name}}</strong>    is not available on stock right now.</p>
+    </div>
+
+    <div class="dialog-button-group" ng-if="stockAvaibilityStatus">
+        <button id="modal-refill-button" class="secondary-button" type="button" ng-click="drugStockAvaibilityContinue(stockAvaibilityDrugOrder)" focus-on="popupActive" ng-focus="toggleTabIndexWithinModal($event)">Continue</button>
+        <button id="modal-revise-button" class="secondary-button" ng-click="drugStockAvaibilityCancel()" ng-focus="toggleTabIndexWithinModal($event)">Cancel</button>
+    </div>
+
+
+    <span class="ngdialog-end"></span>
+</div>

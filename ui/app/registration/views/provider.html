@@ -1,0 +1,15 @@
+<article class="form-field patient-name-wrapper">
+    <div class="field-attribute">
+        <label for="providerLabel">{{ ::'REGISTRATION_LABEL_PROVIDER' | translate}}</label>
+    </div>
+    <div class="field-value" id="providerLabel">
+        <select id="providerInCharge"  ng-model="patient.providerInCharge"  >
+            <option value="">{{ ::'PLACEHOLDER_PROVIDER' | translate}}</option>
+            <option ng-repeat="provider in providerConfig.providers" value="{{provider.person.display}}">{{provider.person.display}}</option>
+        </select>
+    </div>
+
+</article>
+
+
+

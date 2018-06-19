@@ -1,0 +1,81 @@
+<section>
+    <article class="form-field form-field-ipad" id="billing">
+        <div class="field-attribute">
+            <label for="paymentCategoryLabel">{{ ::'REGISTRATION_LABEL_PAYMENT_CATEGORY' | translate}}<span class="asterick">*</span></label>
+        </div>
+
+        <div class="field-value age-field" id="paymentCategoryLabel">
+            <div class="field-value">
+                <select id="paymentCategory" ng-model="patient.paymentCategory" required="required"
+                        title="Select Category">
+                    <option value="">{{ ::'REGISTRATION_LABEL_SELECT_PAYMENT_CATEGORY' | translate}}</option>
+                    <option ng-repeat="input in billingCategory" value="{{input}}">{{input}}</option>
+                </select>
+            </div>
+
+        </div>
+        <div>
+            <div ng-show="patient.paymentCategory=='Exemption'">
+                <div class="field-attribute">
+                    <label for="paymentExemptionSubCategoryLabel">{{ ::'REGISTRATION_LABEL_PAYMENT_SUB_CATEGORY' |
+                        translate}}</label>
+                </div>
+
+                <div class="field-value age-field" id="paymentExemptionSubCategoryLabel">
+                    <div class="field-value">
+                        <select id="paymentExemptionSubCategory" ng-model="patient.paymentExemptionSubCategory"
+                                >
+                            <option value="">{{ ::'REGISTRATION_LABEL_SELECT_PAYMENT_SUB_CATEGORY' | translate}}
+                            </option>
+                            <option ng-repeat="input in billingExemptionSubCategory" value="{{input}}">{{input}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="patient.paymentCategory=='Insurance'">
+                <div>
+                    <div class="field-attribute">
+                        <label for="insuranceTypeLabel">{{ ::'REGISTRATION_LABEL_INSURANCE_TYPE' |
+                            translate}}</label>
+                    </div>
+
+                    <div class="field-value age-field" id="insuranceTypeLabel">
+                        <select id="insuranceType" ng-model="patient.insuranceType"
+                                title="Select Type">
+                            <option value="">{{ ::'REGISTRATION_LABEL_SELECT_INSURANCE_TYPE' | translate}}</option>
+                            <option ng-repeat="input in insuranceCodes" value="{{input}}">{{input}}</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div>
+                    <div class="field-attribute">
+                        <label for="insuranceIdentificationLabel">{{ ::'REGISTRATION_LABEL_INSURANCE_IDENTIFICATION' |
+                            translate}}</label>
+                    </div>
+
+                    <div class="field-value age-field" id="insuranceIdentificationLabel">
+                        <div class="field-value">
+                            <input type="text" id="insuranceIdentification" ng-model="patient.insuranceIdentification">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+</br>
+<section>
+    <article class="form-field form-field-ipad" ng-show="patient.paymentCategory=='Insurance'">
+        <div ng-show="patient.insuranceType=='NHIF'">
+
+            <button type="submit" class="right validate-btn" ng-click='validateNHIF()'
+                    accesskey="{{ ::'REGISTRATION_VALIDATE_ACCESS_KEY' | translate}}"
+                    ng-bind-html="::'REGISTRATION_LABEL_VALIDATE' | translate"></button>
+
+        </div>
+
+    </article>
+</section>

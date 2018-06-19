@@ -1,0 +1,143 @@
+<div class="adt">
+    <div class="box">
+        <div class="audit-log-filter">
+            <header>
+                <p>Filters</p>
+            </header>
+            <article id="startFrom">
+
+                <div>
+                    <p>
+                        <label for="startFrom">Report </label>
+                        <select id="reportName" ng-model="report.name"
+                                ng-options="d.name for d in reports" class="disposition-action">
+                            <option value="">Select</option>
+                        </select>
+                    </p>
+                </div>
+                <div id="periodFilter" ng-if="report.name">
+                    <p>
+                    <label for="startFrom">Period Filter </label>
+                    <select id="periodFilterContent" ng-model="report.periodFilter"
+                            class="disposition-action" ng-change="periodFilterContent(report.periodFilter)">
+                        <option value="">Select</option>
+                        <option value="Dates">Dates</option>
+                        <option value="Quarterly">Quarterly</option>
+                        <option value="Yearly">Yearly</option>
+                        <option value="Cohort">Cohort</option>
+                    </select>
+                    </p>
+                </div>
+                <div ng-if="report.name && datesFilterSection" id="datesFilterSection">
+                <p>
+                    <label for="startFrom">Start From  </label>
+                    <input class="disposition-action" id="startDate" type="date" ng-model="report.startDate" max="{{::maxDate}}">
+                </p>
+                <p>
+                    <label for="endDate">To  </label>
+                    <input class="disposition-action" id="endDate" type="date" ng-model="report.stopDate" max="{{::maxDate}}">
+                </p>
+                </div>
+
+                <div ng-if="report.name && yearFilterSection" id="yearFilterSection">
+                    <p>
+                        <label for="startFrom">Start From  </label>
+                        <input class="disposition-action"  type="number" min="1900" max="2099" step="1" value="2018" ng-model="report.startYear" />
+                    </p>
+                    <p>
+                        <label for="endDate">To  </label>
+                        <input  class="disposition-action"  type="number" min="1900" max="2099" step="1" value="2018" ng-model="report.endYear"/>
+                    </p>
+                </div>
+
+                <div ng-if="report.name && quarterFilterSection" id="quarterFilterSection">
+                    <p>
+                        <label for="startFrom">Year  </label>
+                        <input  class="disposition-action" ng-model="report.year" type="number" min="1900" max="2099" step="1" value="2018" />
+                    </p>
+                    <p>
+                        <label for="endDate">Quarterly  </label>
+                        <select id="quaterFilter" ng-model="report.quarter"
+                                class="disposition-action">
+                            <option value="Jan - March">Jan - March</option>
+                            <option value="Apr - June">Apr - June</option>
+                            <option value="Jul - Sept">Jul - Sept</option>
+                            <option value="Oct - Dec">Oct - Dec</option>
+                        </select>
+                    </p>
+                </div>
+
+
+                <div ng-if="report.name && cohortSection" id="cohortSection">
+
+                    <p>
+                        <label for="endDate">Follow Up Period  </label>
+                        <select id="followUpPeriodFilter" ng-model="report.followUpPeriod"
+                                class="disposition-action">
+                            <option value="6">6</option>
+                            <option value="12">12</option>
+                            <option value="24">24</option>
+                            <option value="36">36</option>
+                            <option value="48">48</option>
+                            <option value="60">60</option>
+                            <option value="72">72</option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <label for="startFrom">Year  </label>
+                        <input  class="disposition-action" ng-model="report.year" type="number" min="1900" max="2099" step="1" value="2018" />
+                    </p>
+
+                    <p>
+                        <label for="endDate">Quarterly  </label>
+                        <select id="quaterFilter" ng-model="report.quarter"
+                                class="disposition-action">
+                            <option value="Jan - March">Jan - March</option>
+                            <option value="Apr - June">Apr - June</option>
+                            <option value="Jul - Sept">Jul - Sept</option>
+                            <option value="Oct - De">Oct - Dec</option>
+                        </select>
+                    </p>
+
+
+                </div>
+
+
+                <div ng-if="report.name && formatSection" id="reportFormatSection">
+                    <p>
+                        <label for="endDate">Report Format  </label>
+                        <select  ng-model="report.responseType" class="disposition-action" ng-options="type as label for (label , type) in ::formats">
+                            <option value="">Choose Format</option>
+                        </select>
+                    </p>
+                </div>
+                <p>
+                <button  type="submit" class="run-report confirm" ng-click="downloadReport(report)">
+                    {{::'RUN_NOW_BUTTON_KEY' |translate}}
+                </button>
+                </p>
+            </article>
+
+        </div>
+
+        <div class="submit-btn-container" ng-if="reportName">
+            <div class="right">
+                <span ng-repeat="extn in actions">
+                    <span ng-switch="extn.extensionParams.action">
+                        <div ng-switch-when="startVisit" split-button options="visitControl.visitTypes"
+                             primary-option="visitControl.defaultVisitType" option-text="visitControl.startButtonText"
+                             option-click="startNewVisit" class="right">
+                        </div>
+                        <button ng-switch-default="" type="submit" class="right admit_btn"
+                                single-click="call(extn.extensionParams.action)">
+                            {{getDisplay(extn.extensionParams.displayFunction, extn.extensionParams.display)}}
+                        </button>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <dashboard patient="patient" config="dashboardConfig" section-groups="sectionGroups" active-visit-uuid="visitSummary.uuid" visit-summary="visitSummary"></dashboard>
+</div>
+

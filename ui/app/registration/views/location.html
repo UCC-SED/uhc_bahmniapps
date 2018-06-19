@@ -1,0 +1,15 @@
+<article class="form-field patient-name-wrapper">
+    <div class="field-attribute">
+        <label for="providerLabel">{{ ::'REGISTRATION_LABEL_DOCTOR_ROOM_LOC' | translate}}<span class="asterick">*</span></label>
+    </div>
+    <div class="field-value" id="providerLabel">
+        <select id="providerInCharge"  ng-model="patient.providerInCharge"  required="required" >
+            <option value="">{{ ::'PLACEHOLDER_DOCTOR_ROOM' | translate}}</option>
+            <option ng-repeat="location in locationConfig.locations" value="{{location.display}}">{{location.display}}</option>
+        </select>
+    </div>
+
+</article>
+
+
+

@@ -1,0 +1,53 @@
+<div class="revise-refill-modal-wrapper" aria-labelledby="dialog-label" id="insuranceStatusModal">
+    <span class="ngdialog-start"></span>
+
+    <span class="ngdialog-close"></span>
+
+    <div class="drug-details">
+        <p><strong class="drug-name">NHIF CARD STATUS</p>
+    </div>
+    <div>
+        <table>
+            <tbody>
+            <tr>
+                <td>Name</td>
+                <td>{{verificationResults.FirstName}} {{verificationResults.MiddleName}}
+                    {{verificationResults.LastName}}
+                </td>
+            </tr>
+            <tr>
+                <td>Card No</td>
+                <td>{{verificationResults.CardNo}}
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>{{verificationResults.Gender}}
+                </td>
+            </tr>
+            <tr>
+                <td>Authorization Status</td>
+                <td>{{verificationResults.AuthorizationStatus}}
+                </td>
+            </tr>
+            <tr>
+                <td>Remarks</td>
+                <td>{{verificationResults.Remarks}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </br>
+    <div class="dialog-button-group">
+        <button id="modal-okay-button" class="secondary-button" ng-click="closeThisDialog(0)"
+                ng-focus="toggleTabIndexWithinModal($event)">Okay
+        </button>
+
+    </div>
+
+
+    <span class="ngdialog-end"></span>
+</div>
+
+

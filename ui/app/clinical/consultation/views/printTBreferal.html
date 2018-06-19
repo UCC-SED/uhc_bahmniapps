@@ -1,0 +1,80 @@
+<div align='center'>
+			<strong>Wizara ya Afya, Maendeleo ya Jamii, Jinsia, Wazee na Watoto</strong>
+			<h4>Mpango wa Taifa wa Kudhibiti Kifua Kikuu na Ukoma</h4>
+			<img src='https://seeklogo.com/images/C/coat-of-arms-of-tanzania-logo-3AB82BCE6A-seeklogo.com.png' width='200px'/>
+			<h2>Fomu ya Rufaa / Uhamisho</h2>
+			</div >
+			<div>  <table style="borders:0px;">
+				<tr>
+			<td>Toka kituo cha huduma cha: <u>{{hospitalName}}</u></td><td></td>
+			<td>Wilaya: <u>{{district}}</u></td></tr></tr>
+			<td>Kwenda kituo cha huduma cha:<u>{{hospital_name}}</u></td><td></td>
+			<td>Wilaya:<u>{{FacilityToBeDistrict}}</u></td></tr><tr>
+			<td>Jina la mgonjwa: <u>{{patient.name}}</u></td><td></td>
+			<td>Me: <u>{{male}}</u> Ke: <u>{{female}}</u> Umri: <u>{{patient.age}} </u></td></tr><tr>
+			<td>Makazi ya sasa:<u> {{MakazSasa}}</u></td>
+			<td>Namba ya Wilaya: <u>{{nambaWilayaSasa}}</u> </td>
+			<td>Na. ya huduma ya VVU: <u>{{HIVnO}}</u></td></tr><tr>
+			<td>Makazi Mapya:<u>{{nambaWilayamapya}}</u> </td>
+			<td>Namba ya Wilaya: <u>{{Makazmapya}}</u></td>
+			<td>Namba ya Kitambulisho cha Taifa: </td></tr>
+			  </table><table>
+			<tr>
+			<td>Sababu ya rufaa/uhamisho: <u>{{remarks}}</u></td></tr>
+			<tr>
+			<td>Taarifa muhimu za mgonjwa (clinical notes): <u>{{clinical_notes}}</u></td>
+			</tr>
+			</table>
+    <br/>
+      <table align='center'>
+      <tr>
+      <th>Kifua Kikuu</th>
+      <th>Ukoma</th>
+       <th>TB/HIV</th>
+      <th>MDR TB</th>
+      </tr>
+	  <tr>
+	  <td>Cha mapafu: {{tb_lung}}</td>
+	  <td>PB:</td>
+	  <td>{{HIVstatus}}</td>
+	  <td></td>
+	  </tr>
+	  <tr>
+	  <td>Cha sehemu nyingine: {{tb_other}}</td>
+	  <td>MB:</td>
+	  <td></td>
+	  <td></td>
+	  </tr>
+      </tr>
+      </table>
+     
+      <table>
+        <tr><td>Tarehe alipoanza matibabu ya Kifua kikkuu/ukoma:<u><span ng-bind="startDate | date:'dd/MM/yyyy'"></span></span></u></td></tr>
+        <tr><td>Nimempa mgonjwa dawa za Kifua kikuu/ukoma:<u>{{tbDrugs}}</u> kuanzia tarehe: <u><span ng-bind="dotStart | date:'dd/MM/yyyy'"></span></span></u> hadi: <u><span ng-bind="dotEnd | date:'dd/MM/yyyy'"></span></u></td></tr>
+        <tr><td>Tarehe alipoanza huduma ya VVU:<u><span ng-bind="HIVdATE | date:'dd/MM/yyyy'"></span></u></td></tr>
+       <tr><td> Nimempa mgonjwa dawa za VVU <u>{{hivDrugs}}</u> kuanzia tarehe:<u><span ng-bind="smallDate | date:'dd/MM/yyyy'"></span></u> hadi: <u><span ng-bind="BigDate | date:'dd/MM/yyyy'"></span></u></td></tr>
+        <tr><td>Matokeo ya maabara ya karibuni: Makohozi </u>{{Smear}}</u> Kwa tarehe:<u>{{SmearDate}}</u> Ngozi:<u>{{slitskin}}</u> Kwa tarehe:<u>{{slitskinDate}}</u></td></tr>
+        <tr><td>Matokeo ya CD4 ya karibuni:<u>{{cd4}}</u> Kwa tarehe: <u><span ng-bind="cd4Date | date:'dd/MM/yyyy'"></span></span></u></td></tr>
+        <tr><td>Apimwe tena makohozi mwezi wa:</td></tr>
+        <tr><td>Dawa nyingine alizopewa mgonjwa: kuanzia tarehe:</span><span>hadi:</td></tr>
+        <tr><td>Maelezo mengine</td></tr>
+        <tr><td>Jina:<u>{{docFullName}}</u></span> <span>Namba ya simu: <u>{{PhoneNumber}}</u></td></tr>
+        <tr><td>Cheo:<u>{{title}}</u></td></tr><br/>
+        </table>
+        </div>
+        <strong><h3>Sehemu hii ijazwe na mganga wa kituo alichopelekwa mgonjwa na irudishwe kwa mganga wa kituo alichotoka mgonjwa</h3></strong>
+      <table>
+        <tr><td> Toka kituo cha huduma cha: ___________________________________________ Wilaya: _______________________________________</td></tr>
+		 <tr><td>Kwenda kituo cha huduma cha _________________________________________ Wialya ______________________________________</td></tr>
+	<tr><td>Jina la mgonjwa: _____________________________________________________ Me: ____ Ke: ____ Umri: ____  </td></tr>
+ <tr><td>Kijiji: _______________________________________________________________</td></tr>
+ <tr><td>Amefika hapa kwetu tarehe: _____/ _____/ 20_____      </td></tr>
+ <tr><td>Hatua zilizochukuliwa hapa (kwa rufaa tu)__________________________________________________________________________________ </td></tr>
+ <tr><td>Matokeo ya tiba:______________________________________________________________________________________________________</td></tr>
+ <tr><td>Maelezo mengine:____________________________________________________________________________________________________</td></tr>
+ <tr><td>Jina: _____________________________________________________________</td></tr>
+ <tr><td>Cheo:____________________________________________________________</td></tr>
+ <tr><td>Tarehe: _____/_____/20_____ Namba ya simu: _______________________</td></tr>
+ <tr><td>Anwani ya barua pepe: _________________________</td></tr>
+       </table>
+    </div>

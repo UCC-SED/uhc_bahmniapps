@@ -1,0 +1,53 @@
+<div style="width:70%" >
+	<div style="float:left;width:100px;">
+		<img src="./../images/tanzania-logo.png" height="100px"/>
+	</div>
+	<div style="float:right;">
+		<strong>THE UNITED REPUPLIC OF TANZANIA</strong>
+		<h5>MINISTRY OF HEALTH, COMMUNITY DEVELOPMENT, GENDER, ELDERLY AND CHILDREN</h5>
+		<h5>NATIONAL HIV CARE AND TREATMENT</h5>
+		<h5>PATIENT REFERRAL/TRANSFER FORM</h5>
+
+	</div>
+</div>
+<table>
+	<tr><td>DATE:<u><span ng-bind="CurrentDate | date:'dd/MM/yyyy'"></span></u></td></tr><br/>
+	<tr><td>REFERRAL FROM: FACILITY NAME: <u>{{hospitalName}}</u> FACILITY CODE:___________</td></tr>
+	<tr><td>REFERRAL TO:FACILITY NAME:<u>{{hospital_name}}</td></tr>
+	<tr><td>FULL NAME:<u>{{patient.name}}</u></td></tr>
+	<tr><td>DATE OF BIRTH: CURRENT AGE:<u>{{patient.age}} </u> GENDER:Female:<u>{{female}}</u>Male:<u>{{male}}</u></td></tr>
+	<tr><td>REASON FOR REFERRAL/TRANSFER:<u>{{remarks}}</u></td></tr>
+	<tr><td>DATE CONFIRMED HIV+:<u><span ng-bind="verifiedHiv | date:'dd/MM/yyyy'"></span></u> DATE ENROLLED IN CARE:<u><span ng-bind="HIVdATE | date:'dd/MM/yyyy'"></span></u></td></tr>
+	<tr><td>DATE MEDICALLY ELIGIBLE:<u><span ng-bind="date_readyMeds | date:'dd/MM/yyyy'"></span></u> DATE ELIGIBLE AND READY:<u><span ng-bind="date_readyMeds | date:'dd/MM/yyyy'"></span></u></td></tr>
+	<tr><td>ART START DATE:<u><span ng-bind="date_startMeds | date:'dd/MM/yyyy'"></span></u>UNIQUE CTC ID:{{HIVnO}}</td></tr>
+	<tr><td><strong>AT START OF ART</strong></td></tr>
+	<tr><td>WEIGHT (KG):<u>{{weight}} </u> FUNCTIONAL STATUS:<u>{{functional_Status}}</u> CLINICAL STAGE:<u>{{clinical_stage}}</u> CD4:<u>{{cd4_count}}</u></td></tr>
+	<tr><td>ORIGINAL FIRST REGIMEN:</td></tr>
+	<tr><td>1st SUBSTITUTION: DATE: WHY:</td></tr>
+	<tr><td>2nd SUBSTITUTION: DATE: WHY:</td></tr>
+	<tr><td>SECOND LINE REGIMEN: DATE: WHY:</td></tr>
+	<tr><td>CURRENT ON TB TREATMENT?: <u>{{tbYes}}</u> DATE STARTED:<u><span ng-bind="dateEnrollTB | date:'dd/MM/yyyy'"></span></u></td></tr>
+	<tr><td>OTHER RELEVANT MEDS(including INH,CTX):</td></tr>
+	<tr><td>DRUG ALLERGIES:</td></tr>
+	<span ng-if="female!=null">
+<tr><td>CURRENTLY PREGNANT?<u>{{preg}}</u> EDD:</td></tr></span>
+	<tr><td>OTHER RELEVANT CLINICAL NOTES:</td></tr>
+	<tr><td>NAME, SIGNATURE AND STAMP:<u>{{docFullName}}</u>_________________</td></tr>
+</table>
+<strong>FEEDBACK SECTION</strong>
+<strong>Service provided to be filled out by the orginisation providing the requested service</strong>
+<table>
+	<tr><td>Date:__________</td></tr>
+	<tr><td>Patient Name:______________________ Date of Birth/Age:______________</td></tr>
+	<tr><td></td></tr>
+	<tr><td><strong>Service Provided</strong></td></tr>
+	<tr><td>Services Provided:_______________________________________</td></tr>
+	<tr><td>Services Complited as Requested:___Yes ____No</td></tr>
+	<tr><td>Follow up needed Services:_______________ Date for follow up:__________</td></tr>
+	<tr><td><strong>Additional Comments:</strong><br/><br/><br/><br/></td></tr>
+	<tr><td><strong>Name of Orginization/Health Facility:</strong></td></tr>
+	<tr><td><strong>Contact person/referral focal person</strong></td></tr>
+	<tr><td>Name:______________________
+		Designation:_______________ Mobile Tel. No.______________</td></tr>
+</table>
+

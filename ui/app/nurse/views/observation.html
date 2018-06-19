@@ -1,0 +1,28 @@
+<div>
+    <div>
+        <div ng-repeat="obs in nurseObservationConfig" class="concept-set-group section-grid order-fullfilment-contianer">
+            <div id="{{obs.uuid}}" style="position: relative;">
+                <div class="concept-set-title" ng-click="toggleShowOrderForm(obs)">
+                    <h2 class="section-title">
+                        <i class="fa fa-caret-right" ng-hide="openStatus"></i>
+                        <i class="fa fa-caret-down" ng-show="openStatus"></i>
+                        <span>{{obs.name.display}}</span>
+                    </h2>
+                </div>
+                <div ng-if="obs.showForm">
+                    <concept-set patient="patient" ng-if="obs.showForm"
+                                 concept-set-name="obs.name.display"
+                                 observations="observations" show-title="false" section-id="obs.uuid">
+                    </concept-set>
+
+
+                    </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-show="obs && obs.length == 0">
+        <div class="placeholder-text">No order of type {{orderType}} for this patient.</div>
+    </div>
+</div>

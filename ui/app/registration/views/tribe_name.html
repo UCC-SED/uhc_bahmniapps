@@ -1,0 +1,54 @@
+<article class="form-field patient-name-wrapper">
+    <script>
+  $( function() {
+
+    $( "#tribeName" ).autocomplete({
+      source: function( request, response ) {
+        $.ajax( {
+          url: window.location.protocol + "//" + window.location.host + "/openmrs/ws/rest/v1/tribe/searchNames",
+          dataType: "json",
+          data: {
+            tribeName: request.term
+          },
+          success: function( data ) {
+                
+              if(data == null){
+            data = {label : "Other"};
+              response(data);
+                 }
+                 else{
+             response($.map(data, function (value, key) {   
+                 
+                return {
+                    label: value.tribe_name,
+                    value: value.id
+                }
+            }));
+          }
+          }
+        } );
+      },
+      minLength: 2,
+      focus: function(event, ui) {
+					// prevent autocomplete from updating the textbox
+					event.preventDefault();
+					$(this).val(ui.item.label);
+				},
+				select: function(event, ui) {
+					// prevent autocomplete from updating the textbox
+					event.preventDefault();
+					// manually update the textbox and hidden field
+					$(this).val(ui.item.label);
+				}
+    });
+  } );
+  </script>
+    <div class="field-attribute" ng-show="::showTribeName">
+        <label for="tribeNameLabel">{{ ::'REGISTRATION_LABEL_Tribe_Name' | translate}}</label>
+    </div>
+    <div class="field-value" id="tribeNameLabel" ng-show="::showTribeName">
+        <input id="tribeName"  name="tribeName" ng-model="patient.tribeName">
+
+    </div>
+
+ </article>

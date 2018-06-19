@@ -1,0 +1,41 @@
+<div class="revise-refill-modal-wrapper" aria-labelledby="dialog-label" id="privious_data">
+    <span class="ngdialog-start"></span>
+
+    <span class="ngdialog-close"></span>
+
+    <div class="drug-details">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">{{conceptName}}</th>
+                <th scope="col">Date Recorded</th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="privious in priviousData" ng-if="coded==false">
+            <tr>
+                <td>{{privious.value}}</td>
+                <td><span ng-bind="privious.observationDateTime | date:'dd/MM/yyyy'"></span></td>
+            </tr>
+            </tbody>
+            <tbody ng-repeat="privious2 in priviousData2" ng-if="coded==true">
+            <tr>
+
+                <td>{{privious2.valueAsString}}</td>
+                <td><span ng-bind="privious2.observationDateTime | date:'dd/MM/yyyy'"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    </br>
+    <div class="dialog-button-group">
+
+        <button id="modal-import-button" class="secondary-button"  ng-click="closeThisDialog()"
+                ng-focus="toggleTabIndexWithinModal($event)">Close
+        </button>
+    </div>
+
+
+    <span class="ngdialog-end"></span>
+</div>

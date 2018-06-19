@@ -1,0 +1,57 @@
+<div align="center"  >
+	<div align="center">
+		<strong>THE UNITED REPUPLIC OF TANZANIA</strong>
+		<h4>MINISTRY OF HEALTH, COMMUNITY DEVELOPMENT, GENDER, ELDERLY AND CHILDREN </h4>
+
+	</div>
+	<font size="4.2" face="Courier New" color="#0000" >
+<div align="left" style="float:left;">
+	<h5>Telephone 026 2394570</h5>
+	<h5>FAX. No. 2390364</h5>
+	<h3>To</h3>
+	<h5> {{hospital_name}}</h5>
+	<h5>{{address}}</h5>
+	<h5>{{address2}}</h5>
+	<h5>{{FacilityToBeDistrict}}</h5>
+</div>
+	<img src="./../images/tanzania-logo.png" height="80px"/>
+<div style="float:right;">
+<h5>{{hospitalName}}</h5>
+	<h5>P. Box 910,</h5>
+	<h4>DODOMA</h4>
+	<h4>DATE:<u><span ng-bind="CurrentDate | date:'dd/MM/yyyy'"></span></u></h4>
+</div>
+	<h3>HOSPITAL REFERRAL FORM</h3><br/>
+
+</div>
+<div>
+
+<table width="100%">
+<tr><td>FULL NAME:<u>{{patient.name}}</u>&nbsp;SEX:<u>{{gender}}</u> &nbsp;File No:<u>{{patient.FileNumber.value}}</u></td></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr><td>AGE:<u>{{patient.age}} </u> &nbsp;&nbsp;&nbsp;Address:<u>{{patient.address.address2}},{{patient.address.address3}}</u>&nbsp;&nbsp;&nbsp; Occupation:<u> {{patient.occupation.value.display}}</u></td></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr><td>Brief History/Clinical & Psychiatric Findings:<u>{{clinical_notes}}</u></td></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr><td>Diagnosis:<p>{{diagnos}}</p></td></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr><td>Treatment:<u>{{trets}}</u></td></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr><td>REASON FOR REFERRAL/TRANSFER:<u>{{remarks}}</u></td></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr><td>NAME OF OFFICER:<u>{{docFullName}}</td></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr><td>SIGNATURE:<u> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</u></td></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr><td>DESIGNATION:<u>{{title}}</u></td></tr>
+	<tr><td>Phone Number:<u>{{PhoneNumber}}</u></td></tr>
+</table></font>
+</div>
