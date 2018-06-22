@@ -2,9 +2,9 @@
 
 angular.module('bahmni.common.uicontrols.programmanagment')
     .controller('ManageProgramController', ['$scope', 'retrospectiveEntryService', '$window', 'programService',
-        'spinner', 'messagingService', '$stateParams', '$q', 'confirmBox',  'appService', 'programAttributesHelper',
+        'spinner', 'messagingService', '$stateParams', '$q', 'confirmBox',
         function ($scope, retrospectiveEntryService, $window, programService,
-                  spinner, messagingService, $stateParams, $q, confirmBox,appService,programAttributesHelper) {
+                  spinner, messagingService, $stateParams, $q, confirmBox) {
             var DateUtil = Bahmni.Common.Util.DateUtil;
             $scope.programSelected = {};
             $scope.workflowStateSelected = {};
@@ -14,10 +14,6 @@ angular.module('bahmni.common.uicontrols.programmanagment')
             $scope.outComesForProgram = [];
             $scope.configName = $stateParams.configName;
             $scope.today = DateUtil.getDateWithoutTime(DateUtil.now());
-            $scope.allProgramAttributeTypes = [];
-            $scope.programAttributeTypes = [];
-
-            var programSpecificAttributeTypesDefinition = appService.getAppDescriptor().getConfigValue("program").programSpecificAttributeTypesDefinition;
             var id = "#programEnrollmentContainer";
 
             var updateActiveProgramsList = function () {
@@ -63,7 +59,6 @@ angular.module('bahmni.common.uicontrols.programmanagment')
                 }), id);
                 spinner.forPromise(programService.getProgramAttributeTypes().then(function (programAttributeTypes) {
                     $scope.programAttributeTypes = programAttributeTypes;
-                    $scope.allProgramAttributeTypes = programAttributeTypes;
                 }), id);
                 $scope.programSelected = null;
                 $scope.patientProgramAttributes = {};
@@ -237,47 +232,10 @@ angular.module('bahmni.common.uicontrols.programmanagment')
                 program.patientProgramAttributes = $scope.tempProgram.patientProgramAttributes;
                 program.editing = !program.editing;
             };
-            $scope.handleChange = function (){
-                console.log(1232);
-            }
-            $scope.handleProgramAttributeUpdate = function (attributeName) {
-                console.log("**"+attributeName);
-            var formConditions = Bahmni.Clinical.Program.FormConditions;
-           // console.log(formConditions);
-            if (formConditions && formConditions.rules) {
-                var conditionFn = formConditions.rules[attributeName];
-                $scope.programAttributeTypes = runOnConditions(conditionFn, $scope.patientProgramAttributes, $scope.programAttributeTypes, $scope.allProgramAttributeTypes);
-               // $scope.patientProgramAttributes = resetProgramAttributeHiddenValue(conditionFn, $scope.patientProgramAttributes);
-            }
-        };
-        var runOnConditions = function (conditionFn, patientProgramAttributes, programAttributeTypes, allAttributeTypes) {
-           console.log(conditionFn);
-           console.log(patientProgramAttributes);
-           console.log(programAttributeTypes);
-           console.log(allAttributeTypes);
-            if (!conditionFn) {
-                return programAttributeTypes;
-            }
-            var formFieldValues = programAttributesHelper.mapFieldWithConceptValue(patientProgramAttributes, programAttributeTypes);
-            var conditions = conditionFn(formFieldValues);
-            console.log(formFieldValues);
-            console.log(conditions);
-            
-            var allShownAttributeTypes = programAttributesHelper.showAttributes(conditions.show, programAttributeTypes, allAttributeTypes);
-          //  var sortedAttributeType = programAttributesHelper.sortBasedOnConfiguration(allShownAttributeTypes, $scope.programSelected.name);
-            return programAttributesHelper.filterOnHide(conditions.hide, allShownAttributeTypes);
-        };
 
             $scope.setWorkflowStates = function (program) {
                 $scope.patientProgramAttributes = {};
                 $scope.programWorkflowStates = $scope.getStates(program);
-                $scope.programAttributeTypes = getProgramAttributesForCurrentProgram(program);
-            };
-            var getProgramAttributesForCurrentProgram = function (program) {
-                if (!program) {
-                    return $scope.allProgramAttributeTypes;
-                }
-                return getProgramAttributeTypeAssignedToProgram(program, $scope.allProgramAttributeTypes, programSpecificAttributeTypesDefinition);
             };
 
             $scope.getStates = function (program) {
@@ -286,34 +244,6 @@ angular.module('bahmni.common.uicontrols.programmanagment')
                     states = program.allWorkflows[0].states;
                 }
                 return states;
-            };
-
-
-
-            var getProgramAttributeTypeAssignedToProgram = function (currentProgram, programAttributeTypes, programAttributeTypeMapConfig) {
-                console.log(programAttributeTypes);
-                var filterProgramAttributes = function (programAttributeType) {
-                    
-                    if (!currentProgramMapConfig) {
-                        return true;
-                    }
-                    return _.indexOf(currentProgramMapConfig.attributeTypes, programAttributeType.name) >= 0;
-                };
-                
-                if (!programAttributeTypeMapConfig) {
-                    return programAttributeTypes;
-                }
-                var currentProgramMapConfig = programAttributesHelper.getAttributeTypesConfigurationForProgram(currentProgram.name);
-                var availableProgramAttributeTypesForProgram = _.filter(programAttributeTypes, filterProgramAttributes);
-               
-                console.log(currentProgramMapConfig);
-                console.log(availableProgramAttributeTypesForProgram);
-                if (!currentProgramMapConfig) {
-                    return availableProgramAttributeTypesForProgram;
-                } else {
-                    return programAttributesHelper
-                        .sortBasedOnConfiguration(availableProgramAttributeTypesForProgram, currentProgram.name);
-                }
             };
 
             $scope.canRemovePatientState = function (state) {
