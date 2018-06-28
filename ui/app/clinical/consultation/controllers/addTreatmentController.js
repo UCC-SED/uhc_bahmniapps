@@ -334,8 +334,8 @@ angular.module('bahmni.clinical')
 
                 if($scope.treatment.drugNonCoded){
                     //solve error on noncoded drugs
-                    newDrugOrder.drug.name=$scope.treatment.drugNonCoded;
-                    newDrugOrder.drug.uuid=$scope.treatment.drugNonCoded+"_uuid";
+                    var newDrugOrder.drug.name=$scope.treatment.drugNonCoded;
+                    var newDrugOrder.drug.uuid=$scope.treatment.drugNonCoded+"_uuid";
                     console.log($scope.treatment);
                 }
                 spinner.forPromise(drugService.getDrugStockStatus(
