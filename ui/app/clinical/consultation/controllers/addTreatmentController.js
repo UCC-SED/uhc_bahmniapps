@@ -332,6 +332,12 @@ angular.module('bahmni.clinical')
 
                 var currentProviderUuid = $rootScope.currentProvider ? $rootScope.currentProvider.uuid : null;
 
+                if($scope.treatment.drugNonCoded){
+                    //solve error on noncoded drugs
+                    newDrugOrder.drug.name=$scope.treatment.drugNonCoded;
+                    newDrugOrder.drug.uuid=$scope.treatment.drugNonCoded+"_uuid";
+                    console.log($scope.treatment);
+                }
                 spinner.forPromise(drugService.getDrugStockStatus(
                     newDrugOrder.drug.name, newDrugOrder.drug.uuid, $scope.gothomisIntegrationStatus, currentProviderUuid
                 ).then(function (response) {
